@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <!-- FIX (móvil): viewport-fit=cover para usar toda la pantalla con notch (los márgenes seguros se aplican con env(safe-area-inset-*) en styles.css). Se permite el zoom del sistema. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#31231d">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Vida Aborigen">
+  <link rel="apple-touch-icon" href="icons/icono-180.png">
+  <link rel="icon" href="icons/icono-192.png">
+  <title>Vida Aborigen · La isla cuenta</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main id="app" class="app-shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">✦</span><span>VIDA ABORIGEN</span><small>LA ISLA CUENTA</small></div>
+      <div class="top-actions"><button id="soundBtn" class="icon-btn" aria-label="Sonido ambiente" aria-pressed="true">◉</button><button id="helpBtn" class="icon-btn" aria-label="Ayuda">?</button></div>
+    </header>
+    <section class="hud">
+      <div><span class="eyebrow">CAMINO DE VIDA</span><strong id="pathName">Sin elegir</strong></div>
+      <div class="meters"><span>✦ <b id="knowledge">0</b> saber</span><span>☼ <b id="day">1</b>/5 jornada</span><span class="season-meter">❀ <b id="season">Otoño</b></span><!-- FIX (fase 6): estación (orientativa) --></div>
+      <button id="codexBtn" class="parchment-btn">Cuaderno</button><button id="inventoryBtn" class="parchment-btn">Abrir zurrón <span id="itemCount">0/10</span></button><!-- FIX (fase 4): bolsillo de acceso rápido (3 casillas) --><div class="pocket" id="pocket" role="group" aria-label="Bolsillo: acceso rápido"><span class="pocket-label">Bolsillo</span><div class="pocket-slots"></div></div>
+    </section>
+
+    <section id="screen" class="screen"></section>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div><!-- FIX: el aviso se anuncia en lectores de pantalla -->
+    <!-- FIX: ventana con role="dialog" y botón de cierre con nombre accesible -->
+    <div id="modal" class="modal hidden"><div class="modal-card" role="dialog" aria-modal="true" aria-label="Ventana de información"><button id="closeModal" class="modal-close" aria-label="Cerrar ventana">×</button><div id="modalBody"></div></div></div>
+    <!-- FIX (móvil): aviso «gira el móvil» (solo se ve en escenas apaisadas con el móvil en vertical) -->
+    <div id="rotateHint" class="rotate-hint" role="dialog" aria-modal="false" aria-labelledby="rotateTitle"><div class="rotate-card"><div class="rotate-icon" aria-hidden="true"><span></span></div><h2 id="rotateTitle">Gira el móvil</h2><p>Esta escena es apaisada: en horizontal se ve todo a buen tamaño.</p><!-- FIX (fase 4): texto general (también la usan el risco, el marisqueo y la pesca) --><button class="parchment-btn" id="rotateContinue">Seguir en vertical</button></div></div>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
